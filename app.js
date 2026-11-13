@@ -1,5 +1,5 @@
 // ==========================================
-// KONFIGURASI SUPABASE (GANTI DENGAN MILIKMU)
+// KONFIGURASI SUPABASE (Diisi otomatis dari proyek Anda)
 // ==========================================
 const SUPABASE_URL = "https://nhxfezqilfwdjsbqvrsr.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_JojZm8AkYj2W4spP7hhXVQ_do2nMYBj";
