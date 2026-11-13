@@ -1,8 +1,8 @@
 // ==========================================
 // KONFIGURASI SUPABASE (Diisi otomatis dari proyek Anda)
 // ==========================================
-const SUPABASE_URL = "https://nhxfezqilfwdjsbqvrsr.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_JojZm8AkYj2W4spP7hhXVQ_do2nMYBj";
+const SUPABASE_URL = "https://muxomnbbxianmnxcqxnw.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_iypGF2J7-8TEPfEzwLll4g_2etK9D7x";
 
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
