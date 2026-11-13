@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comedy Komplex Kocak</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Library Supabase dari CDN (Gratis, tanpa install) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <header>
+    <h1>🎭 Comedy Komplex Kocak</h1>
+    <div id="user-info" class="hidden">
+      <span id="welcome-text"></span>
+      <button onclick="logout()" class="btn-danger">Keluar</button>
+    </div>
+  </header>
+
+  <!-- BAGIAN LOGIN / DAFTAR -->
+  <main id="auth-section" class="card">
+    <h2>Masuk / Daftar Anggota</h2>
+    <input type="email" id="email" placeholder="Email kamu" required />
+    <input type="password" id="password" placeholder="Password (min. 6 karakter)" required />
+    <input type="text" id="nama" placeholder="Nama Panggilan (isi jika baru daftar)" />
+    <label for="tgl-lahir" class="small-label">Tanggal Lahir (isi jika baru daftar):</label>
+    <input type="date" id="tgl-lahir" />
+    <div class="btn-group">
+      <button onclick="login()">Masuk</button>
+      <button onclick="register()" class="btn-secondary">Daftar Baru</button>
+    </div>
+  </main>
+
+  <!-- BAGIAN APLIKASI UTAMA (Muncul setelah login) -->
+  <main id="app-section" class="hidden">
+    <nav class="tabs">
+      <button onclick="showTab('jadwal')" class="tab-btn active">📅 Jadwal Kumpul</button>
+      <button onclick="showTab('ultah')" class="tab-btn">🎂 Ulang Tahun</button>
+      <button onclick="showTab('acara')" class="tab-btn">🎪 Acara Komunitas</button>
+      <button onclick="showTab('chat')" class="tab-btn">💬 Chats</button>
+    </nav>
+
+    <!-- 1. TAB JADWAL KUMPUL -->
+    <section id="tab-jadwal" class="tab-content card">
+      <h3>📅 Jadwal Kumpul Nongkrong</h3>
+      <form onsubmit="tambahJadwal(event)" class="form-inline">
+        <input type="text" id="jadwal-judul" placeholder="Judul (misal: Kopdar Mingguan)" required />
+        <input type="datetime-local" id="jadwal-waktu" required />
+        <input type="text" id="jadwal-lokasi" placeholder="Lokasi kumpul" required />
+        <input type="text" id="jadwal-catatan" placeholder="Catatan tambahan" />
+        <button type="submit">+ Tambah Jadwal</button>
+      </form>
+      <div id="list-jadwal" class="list-container"></div>
+    </section>
+
+    <!-- 2. TAB ULANG TAHUN ANGGOTA -->
+    <section id="tab-ultah" class="tab-content card hidden">
+      <h3>🎂 Daftar Ulang Tahun Anggota</h3>
+      <p class="subtitle">Jangan lupa kasih ucapan dan minta traktiran!</p>
+      <div id="list-ultah" class="list-container"></div>
+    </section>
+
+    <!-- 3. TAB ACARA KOMUNITAS -->
+    <section id="tab-acara" class="tab-content card hidden">
+      <h3>🎪 Acara Besar Komunitas</h3>
+      <form onsubmit="tambahAcara(event)" class="form-inline">
+        <input type="text" id="acara-nama" placeholder="Nama Acara (misal: Standup Night)" required />
+        <input type="date" id="acara-tanggal" required />
+        <input type="text" id="acara-lokasi" placeholder="Tempat Acara" required />
+        <input type="text" id="acara-deskripsi" placeholder="Deskripsi singkat" />
+        <button type="submit">+ Buat Acara</button>
+      </form>
+      <div id="list-acara" class="list-container"></div>
+    </section>
+
+    <!-- 4. TAB CHATS REAL-TIME -->
+    <section id="tab-chat" class="tab-content card hidden">
+      <h3>💬 Obrolan Grup Kocak</h3>
+      <div id="chat-box" class="chat-box"></div>
+      <form onsubmit="kirimPesan(event)" class="chat-form">
+        <input type="text" id="chat-input" placeholder="Ketik lawakan atau pesan..." required />
+        <button type="submit">Kirim</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
